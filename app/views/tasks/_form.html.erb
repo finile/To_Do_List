@@ -1,0 +1,57 @@
+<% if @task.errors.present? %>
+  <div class="errors-container">
+    <h2>
+      Please fill the following messages:
+    </h2>
+    <ul class="errors-list">
+      <% @task.errors.each do |error, message| %>
+      <li> <%= "#{error.capitalize} #{message}" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+  <div class="form-container">
+    <%= form_for @task do |f| %>
+    <div class="form-field">
+      <div class="form-label-container">
+        <%= f.label :task, class: 'form-label' %>
+      </div>
+      <div class="form-input-container"> 
+        <%= f.text_field :task, id: :task_task, class: 'form-input' %>
+      </div>
+    </div>
+
+    <div class="field form-field">
+      <div class="form-label-container">
+        <%= f.label :details, class: 'form-label' %>
+      </div>
+      <div class="form-input-container">
+        <%= f.text_area :details, id: :task_details, class: 'form-input' %>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="form-label-container">
+      <%= f.label :due_date, class: 'form-label' %>
+      </div>
+      <div class="form-input-container">
+      <%= f.date_field :due_date, id: :task_due_date, class: 'form-input' %>
+      </div>
+    </div>
+
+    <div class="filed form-field">
+      <div class="form-label-container">
+      <%= f.label :completed, class: 'form-label' %>
+      </div>
+      <div class="form-input-container">
+      <%= f.check_box :completed, id: :task_completed, class: 'form-imiput' %>
+      </div>
+    </div>  
+
+    <div class= "field form-buttons">
+      <%= f.submit class: 'action-button' %>
+    </div>
+    <% end %>
+  </div>

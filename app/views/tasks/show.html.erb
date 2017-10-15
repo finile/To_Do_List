@@ -1,4 +1,32 @@
-<%= @task.task %>
-<%= @task.due_date %>
-<%= simple_format(@task.details) %>
-<%= link_to 'Back to List', tasks_path %>
+<h1 class="task-header">
+  <%= @task.task %>
+</h1>
+
+<%= link_to 'Go Back', tasks_path, class:['action-button', 'back-button'] %>
+
+<div class="form-container">
+  <%= form_for @task, :url => tasks_path do |f| %> 
+    <div class="form-field">
+      <div class="form-label-container">
+        <%= f.label :details, "Details" %>
+      </div>
+      <div class="form-input-container">
+        <div class= "form-input" >
+          <%= simple_format(@task.details) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="form-label-container">
+        <%= f.label :due_date, "Due Date" %>
+      </div>
+      <div class="form-input-container">
+        <div class= "form-input">
+          <%= @task.due_date %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
