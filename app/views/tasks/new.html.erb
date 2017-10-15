@@ -1,0 +1,20 @@
+<h1 class="task-header">
+  New task
+</h1>
+
+<%= form_for @task, :url => tasks_path do |f| %>
+  <%= f.label :task, "Task" %>
+  <%= f.text_field :task %>
+
+  <%= f.label :details, "Details" %>
+  <%= f.text_area :details %>
+
+  <%= f.label :due_date, "Due Date" %>
+  <%= f.date_field :due_date %>
+
+
+  <%= f.label :completed, "Completed" %>
+  <%= f.check_box :completed %>
+
+  <%= f.submit "Create Task" %>
+<% end %>
