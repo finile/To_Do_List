@@ -34,9 +34,12 @@ class TasksController < ApplicationController
   end 
 
   def destroy
-    @task.destroy
-
-    redirect_to tasks_url, notice: 'Task was sucessfully created'
+    if @task.due_date <= Date.today
+      redirect_to tasks_url, notice: 'The Due Date is over'
+    else
+      @task.destroy
+      redirect_to tasks_url, notice: 'Task was sucessfully created'
+    end
   end
   
 
